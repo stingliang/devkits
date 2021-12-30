@@ -25,7 +25,3 @@ endif()
 
 add_subdirectory(libdevcore)
 add_subdirectory(main)
-
-# for unit test
-enable_testing()
-add_subdirectory(test)

@@ -1,13 +1,5 @@
 #------------------------------------------------------------------------------
 # generates BuildInfo.h
-# 
-# this module expects
-# ETH_SOURCE_DIR - main CMAKE_SOURCE_DIR
-# ETH_DST_DIR - main CMAKE_BINARY_DIR
-# ETH_BUILD_TYPE
-# ETH_BUILD_PLATFORM
-# ETH_BUILD_NUMBER
-# ETH_VERSION_SUFFIX
 # ------------------------------------------------------------------------------
 
 macro(replace_if_different SOURCE DST)
@@ -47,27 +39,16 @@ if (NOT SAMPLE_COMMIT_HASH)
     set(SAMPLE_COMMIT_HASH 0)
 endif()
 
-#execute_process(
-#    COMMAND git --git-dir=${CMAKE_SOURCE_DIR}/.git --work-tree=${CMAKE_SOURCE_DIR} diff HEAD --shortstat
-#    OUTPUT_VARIABLE SAMPLE_LOCAL_CHANGES OUTPUT_STRIP_TRAILING_WHITESPACE ERROR_QUIET
-#)
-
 execute_process(
     COMMAND date "+%Y%m%d %H:%M:%S" 
     OUTPUT_VARIABLE SAMPLE_BUILD_TIME OUTPUT_STRIP_TRAILING_WHITESPACE ERROR_QUIET
     )
-
-#execute_process(
-#    COMMAND date "+%Y%m%d"
-#    OUTPUT_VARIABLE SAMPLE_BUILD_NUMBER OUTPUT_STRIP_TRAILING_WHITESPACE ERROR_QUIET
-#    )
 
 execute_process(
     COMMAND git rev-parse --abbrev-ref HEAD 
     OUTPUT_VARIABLE SAMPLE_BUILD_BRANCH OUTPUT_STRIP_TRAILING_WHITESPACE ERROR_QUIET
     )
 
-message(STATUS "***********CMAKE_BINARY_DIR = ${CMAKE_BINARY_DIR}")
 set(TMPFILE "${CMAKE_BINARY_DIR}/BuildInfo.h.tmp")
 set(OUTFILE "${CMAKE_BINARY_DIR}/BuildInfo.h")
 

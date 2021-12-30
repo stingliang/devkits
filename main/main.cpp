@@ -2,12 +2,11 @@
 // Created by Liang on 2021/9/17.
 //
 
-#include <iostream>
-#include <BuildInfo.h>
+#include "Common.h"
 
 int main (int argc, const char* argv[]) {
     try {
-        std::cout << "Hello, World!" << std::endl;
+        printVersion();
         return EXIT_FAILURE;
     }
     catch (std::exception& e) {
