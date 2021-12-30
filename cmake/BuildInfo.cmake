@@ -31,6 +31,8 @@ function(create_build_info)
     add_custom_target(BuildInfo.h ALL
         WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
         COMMAND ${CMAKE_COMMAND}
+        -DBUILD_INFO_SOURCE_DIR="${CMAKE_SOURCE_DIR}"
+        -DBUILD_INFO_DST_DIR="${PROJECT_BINARY_DIR}"
         -DSAMPLE_BUILDINFO_IN="${PROJECT_SOURCE_DIR}/cmake/templates/BuildInfo.h.in"
         -DSAMPLE_BUILD_TYPE="${_cmake_build_type}"
         -DSAMPLE_BUILD_OS="${BUILD_OS}"
@@ -41,7 +43,4 @@ function(create_build_info)
         -P "${PROJECT_SOURCE_DIR}/cmake/scripts/buildinfo.cmake"
         )
     include_directories(BEFORE ${PROJECT_BINARY_DIR})
-    message(STATUS "PROJECT_SOURCE_DIR = ${PROJECT_SOURCE_DIR}")
-    message(STATUS "PROJECT_BINARY_DIR = ${PROJECT_BINARY_DIR}")
-    message(STATUS "CmakeScript = ${PROJECT_SOURCE_DIR}/cmake/scripts/buildinfo.cmake")
 endfunction()

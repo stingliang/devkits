@@ -6,6 +6,9 @@
 #define SAMPLE_COMMON_H
 
 #include <iostream>
+
+#include <boost/version.hpp>
+
 #include "BuildInfo.h"
 
 inline void printVersion()
@@ -16,7 +19,7 @@ inline void printVersion()
                                          << SAMPLE_BUILD_TYPE << std::endl;
     std::cout << "Git Branch         : " << SAMPLE_BUILD_BRANCH << std::endl;
     std::cout << "Git Commit         : " << SAMPLE_COMMIT_HASH << std::endl;
-    std::cout << "Git Branch         : " << SAMPLE_BUILD_BRANCH << std::endl;
+    std::cout << "Boost Version      : " << BOOST_LIB_VERSION << std::endl;
 }
 
 #endif //SAMPLE_COMMON_H

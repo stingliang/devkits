@@ -31,7 +31,7 @@ if (NOT SAMPLE_BUILD_PLATFORM)
 endif()
 
 execute_process(
-    COMMAND git --git-dir=${CMAKE_SOURCE_DIR}/.git --work-tree=${CMAKE_SOURCE_DIR} rev-parse HEAD
+    COMMAND git --git-dir=${BUILD_INFO_SOURCE_DIR}/.git --work-tree=${BUILD_INFO_SOURCE_DIR} rev-parse HEAD
     OUTPUT_VARIABLE SAMPLE_COMMIT_HASH OUTPUT_STRIP_TRAILING_WHITESPACE ERROR_QUIET
 ) 
 
@@ -49,8 +49,8 @@ execute_process(
     OUTPUT_VARIABLE SAMPLE_BUILD_BRANCH OUTPUT_STRIP_TRAILING_WHITESPACE ERROR_QUIET
     )
 
-set(TMPFILE "${CMAKE_BINARY_DIR}/BuildInfo.h.tmp")
-set(OUTFILE "${CMAKE_BINARY_DIR}/BuildInfo.h")
+set(TMPFILE "${BUILD_INFO_DST_DIR}/BuildInfo.h.tmp")
+set(OUTFILE "${BUILD_INFO_DST_DIR}/BuildInfo.h")
 
 configure_file("${SAMPLE_BUILDINFO_IN}" "${TMPFILE}")
 
