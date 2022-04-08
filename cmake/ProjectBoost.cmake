@@ -78,7 +78,11 @@ else()
 
     set(BOOST_INCLUDE_DIR ${Boost_INCLUDE_DIRS})
     set(BOOST_LIB_DIR ${Boost_LIBRARY_DIRS})
-    set(BOOST_LIBRARY_SUFFIX .so)
+    if (Boost_USE_STATIC_LIBS)
+        set(BOOST_LIBRARY_SUFFIX .a)
+    else()
+        set(BOOST_LIBRARY_SUFFIX .so)
+    endif ()
 
 endif ()
 
