@@ -8,5 +8,4 @@ else()
 endif ()
 
 target_include_directories(devcore SYSTEM BEFORE PUBLIC ${BOOST_INCLUDE_DIR})
-target_compile_options(devcore PRIVATE -Wno-error -Wno-unused-variable)
 target_link_libraries(devcore PUBLIC Boost::Log Boost::System Boost::Filesystem Boost::DataTime Boost::Thread pthread)

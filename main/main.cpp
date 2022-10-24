@@ -1,15 +1,10 @@
-//
-// Created by Liang on 2021/9/17.
-//
-
-#include "Common.h"
-
+#include "BuildInfo.h"
+#define PROJECT_NAME "Devkits"
 int main (int argc, const char* argv[]) {
     try {
-        printVersion();
+        printVersion(PROJECT_NAME);
         return EXIT_FAILURE;
-    }
-    catch (std::exception& e) {
+    } catch (std::exception& e) {
         std::cerr << e.what();
         return EXIT_FAILURE;
     }
