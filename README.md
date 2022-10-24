@@ -1,5 +1,5 @@
-# quick-develop-environment
-快速构建框架
+# Development kits
+快速构建开发框架
 
 - 模块化编程结构
 - 测试用例集
