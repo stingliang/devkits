@@ -1,5 +1,5 @@
 # Executable program file name
-set(PROGRAM_NAME main)
+set(PROGRAM_NAME Devkits)
 
 # Add all source files
 file(GLOB SRC_LIST "*.h" "*.cpp")

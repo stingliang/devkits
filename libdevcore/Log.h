@@ -32,28 +32,28 @@ namespace expr = boost::log::expressions;
 
 namespace dev {
     class log_initializer {
-    public:
-        struct log_config {
+        public:
+            struct log_config {
 
-            // print log to consoles or not
-            bool console_print = true;
+                // print log to consoles or not
+                bool console_print = true;
 
-            // log severity
-            logging::trivial::severity_level severity = boost::log::trivial::info;
+                // log severity
+                logging::trivial::severity_level severity = boost::log::trivial::info;
 
-            // log path
-            std::string log_path;
+                // log path
+                std::string log_path;
 
-            // maximum size per log file
-            size_t logfile_maxsize = 128 *1024 *1024;
-        };
+                // maximum size per log file
+                size_t logfile_maxsize = 128 *1024 *1024;
+            };
 
-        // init log module with struct "log_config"
-        static void init(const log_config&);
+            // init log module with struct "log_config"
+            static void init(const log_config&);
 
-    private:
-        static bool isInit() { return init_flag; }
-        static bool init_flag;
+        private:
+            static bool isInit() { return init_flag; }
+            static bool init_flag;
     };
 }
 

@@ -15,11 +15,13 @@ set(CMAKE_CXX_STANDARD 14)
 include(BuildInfo)
 create_build_info()
 
+# Load options
+include(Options)
+
 # Third part libraries
 include(ProjectBoost)
 
-# Load options and print info
-include(Options)
+# Print info
 configure_project()
 
 # Add project path to include path

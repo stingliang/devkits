@@ -20,7 +20,7 @@ void log_initializer::init(const log_config &config) {
                     << "["
                     << expr::format_date_time<boost::posix_time::ptime>("TimeStamp", "%Y-%m-%d %H:%M:%S")
                     << "][" << logging::trivial::severity
-                    << "]" << expr::smessage << std::flush()
+                    << "]" << expr::smessage
     );
     if (config.console_print) {
         boost::log::add_console_log(

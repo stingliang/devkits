@@ -25,9 +25,6 @@ if(UNIX)
     # Disable warnings about unknown pragmas (which is enabled by -Wall).
     add_compile_options(-Wno-unknown-pragmas)
     add_compile_options(-fno-omit-frame-pointer)
-
-elseif(WIN32)
-    # Do nothing
 endif()
 
 macro(add_library_info OPT DEF)
@@ -67,7 +64,6 @@ macro(configure_project)
 endmacro()
 
 macro(print_config)
-    message("")
     message("------------------------------------------------------------------------")
     message("-- Configuring   ${PROJECT_NAME} ${PROJECT_VERSION}")
     message("------------------------------------------------------------------------")
@@ -81,4 +77,11 @@ macro(print_config)
     message("-- Tool          Utility tools                ${TOOL}")
     message("------------------------------------------------------------------------")
     message("")
+endmacro()
+
+macro(print_library_info LIBRARY_NAME LIBRARY_VERSION)
+    message("------------------------------------------------------------------------")
+    message("-- Library       ${LIBRARY_NAME}")
+    message("-- Version       ${LIBRARY_VERSION}")
+#    message("------------------------------------------------------------------------")
 endmacro()
