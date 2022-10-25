@@ -11,20 +11,25 @@ project(Devkits VERSION "2.0.0")
 # Required cpp library version
 set(CMAKE_CXX_STANDARD 14)
 
-include(Options)
+# Generate build information
+include(BuildInfo)
+create_build_info()
+
+# Third part libraries
 include(ProjectBoost)
+
+# Load options and print info
+include(Options)
 configure_project()
 
+# Add project path to include path
 include_directories("${CMAKE_SOURCE_DIR}")
 
-# Load libs
-#if (${Boost_FOUND})
-#    add_definitions(-DBOOST_ALL_DYN_LINK)
-#endif()
-
-#add_subdirectory(libdevcore)
+add_subdirectory(libdevcore)
 add_subdirectory(main)
 
 # Unit test settings
-enable_testing()
-add_subdirectory(test)
+if (TESTS)
+    enable_testing()
+    add_subdirectory(test)
+endif()

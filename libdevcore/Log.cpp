@@ -1,8 +1,13 @@
-//
-// Created by stingliang on 2021/9/29 14:30.
-//
+/**
+ * @project Devkits
+ * @file Log.cpp
+ * @author liangrui (liangrui5526@126.com)
+ * @date 2021/9/29 14:30:57
+ */
 
 #include "Log.h"
+
+using namespace dev;
 
 bool log_initializer::init_flag(false);
 
@@ -15,7 +20,7 @@ void log_initializer::init(const log_config &config) {
                     << "["
                     << expr::format_date_time<boost::posix_time::ptime>("TimeStamp", "%Y-%m-%d %H:%M:%S")
                     << "][" << logging::trivial::severity
-                    << "]" << expr::smessage
+                    << "]" << expr::smessage << std::flush()
     );
     if (config.console_print) {
         boost::log::add_console_log(

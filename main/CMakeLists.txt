@@ -1,5 +1,17 @@
+# Executable program file name
+set(PROGRAM_NAME main)
+
+# Add all source files
 file(GLOB SRC_LIST "*.h" "*.cpp")
 
-add_executable(${PROJECT_NAME} ${SRC_LIST})
-#target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR})
-#target_link_libraries(${PROJECT_NAME} PUBLIC devcore Boost::Program_options Boost::Log pthread)
+# Generate the executable program
+add_executable(${PROGRAM_NAME} ${SRC_LIST})
+
+# Include path
+#target_include_directories(${PROGRAM_NAME} PUBLIC ${CMAKE_SOURCE_DIR})
+
+# Link components
+target_link_libraries(${PROGRAM_NAME} PUBLIC devcore)
+
+# Declare dependencies
+add_dependencies(${PROGRAM_NAME} devcore)

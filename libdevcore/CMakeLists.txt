@@ -1,11 +1,17 @@
-file(GLOB SRC_LIST "*.cpp")
-file(GLOB HEADERS "*.h")
+# Library name
+set(LIBRARY_NAME devcore)
 
-if (${Boost_FOUND})
-    add_library(devcore SHARED ${SRC_LIST} ${HEADERS})
-else()
-    add_library(devcore ${SRC_LIST} ${HEADERS})
-endif ()
+# Add all source files
+file(GLOB SRC_LIST "*.h" "*.cpp")
 
-target_include_directories(devcore SYSTEM BEFORE PUBLIC ${BOOST_INCLUDE_DIR})
-target_link_libraries(devcore PUBLIC Boost::Log Boost::System Boost::Filesystem Boost::DataTime Boost::Thread pthread)
+# Generate the executable program
+add_library(${LIBRARY_NAME} STATIC ${SRC_LIST})
+
+# Include path
+#target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_SOURCE_DIR})
+
+# Link components
+target_link_libraries(${LIBRARY_NAME} PUBLIC Boost::log Boost::system)
+
+# Declare dependencies
+add_dependencies(${LIBRARY_NAME} Boost::boost)
