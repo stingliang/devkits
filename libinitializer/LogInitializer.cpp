@@ -24,8 +24,7 @@ namespace expr = boost::log::expressions;
 BOOST_LOG_ATTRIBUTE_KEYWORD(component_id, "ComponentId", std::string)
 
 void LogInitializer::initLog(boost::property_tree::ptree const& _pt, std::string const& _channel,
-                             std::string const& _logPrefix)
-{
+                             std::string const& _logPrefix) {
     std::string logPath = _pt.get<std::string>("log.log_path", "log");
     /// set log level
     unsigned logLevel = getLogLevel(_pt.get<std::string>("log.level", "info"));
