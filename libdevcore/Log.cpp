@@ -1,42 +1,26 @@
 /**
  * @project Devkits
  * @file Log.cpp
- * @author liangrui (liangrui5526@126.com)
- * @date 2021/9/29 14:30:57
+ * @author liangrui (liangrui5526@126.com) 
+ * @date 2022/10/26 20:53:58
  */
 
 #include "Log.h"
 
-using namespace dev;
+#include <boost/log/core.hpp>
 
-bool log_initializer::init_flag(false);
+namespace dev {
+    std::string const FileLogger = "FileLogger";
+    boost::log::sources::severity_channel_logger_mt<boost::log::trivial::severity_level, std::string>
+            FileLoggerHandler(boost::log::keywords::channel = FileLogger);
 
-void log_initializer::init(const log_config &config) {
-    if (isInit()) { return; }
-    logging::core::get()->set_filter(logging::trivial::severity >= config.severity);
-    // set log format
-    auto fmt = (
-            expr::stream
-                    << "["
-                    << expr::format_date_time<boost::posix_time::ptime>("TimeStamp", "%Y-%m-%d %H:%M:%S")
-                    << "][" << logging::trivial::severity
-                    << "]" << expr::smessage
-    );
-    if (config.console_print) {
-        boost::log::add_console_log(
-                std::cout,
-                logging::keywords::format = fmt
-        );
+    std::string const StatFileLogger = "StatFileLogger";
+    boost::log::sources::severity_channel_logger_mt<boost::log::trivial::severity_level, std::string>
+            StatFileLoggerHandler(boost::log::keywords::channel = StatFileLogger);
+
+    LogLevel c_fileLogLevel = LogLevel::TRACE;
+
+    void setFileLogLevel(LogLevel const& _level) {
+        c_fileLogLevel = _level;
     }
-    if (!config.log_path.empty()) {
-        std::string file_name = config.log_path + "/" + "%Y%m%dT%H%M%S.log";
-        logging::add_file_log(
-                keywords::file_name = file_name,
-                keywords::rotation_size = config.logfile_maxsize,
-                keywords::format = fmt
-        );
-    }
-    logging::add_common_attributes();
-    init_flag = true;
-
-} // devkits end
+}  // namespace dev

@@ -28,7 +28,8 @@ configure_project()
 include_directories("${CMAKE_SOURCE_DIR}")
 
 add_subdirectory(libdevcore)
-add_subdirectory(main)
+add_subdirectory(libinitializer)
+add_subdirectory(example)
 
 # Unit test settings
 if (TESTS)
