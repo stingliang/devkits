@@ -1,6 +1,9 @@
-//
-// Created by Liang on 2021/9/29.
-//
+/**
+ * @project Devkits
+ * @file Utility.h
+ * @author liangrui (liangrui5526@126.com)
+ * @date 2021/9/29 14:58:45
+ */
 
 #ifndef DEV_UTILITY_LIBRARY_UTILITY_H
 #define DEV_UTILITY_LIBRARY_UTILITY_H
@@ -41,10 +44,10 @@ std::stringstream printStl(T& s) {
     return ss;
 }
 
-// 二进制转十六进制
-std::string BinToHex(const std::string &strBin, bool bIsUpper = false);
+// string: bin->hex
+std::string binToHex(const std::string &strBin, bool bIsUpper = false);
 
-// 十六进制转二进制
-std::string HexToBin(const std::string &strHex);
+// string: bin->hex
+std::string hexToBin(const std::string &strHex);
 
 #endif //DEV_UTILITY_LIBRARY_UTILITY_H

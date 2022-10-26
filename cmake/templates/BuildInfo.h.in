@@ -1,17 +1,33 @@
-
 /**
- * @file: BuildInfo.h
- * @author: stingliang
- * @date: 2021
- * build information template
+ * @project devkits
+ * @file BuildInfo.h
+ * @author liangrui (liangrui5526@126.com)
+ * @date 2021/9/11
  */
 
 #pragma once
-#define SAMPLE_COMMIT_HASH "@SAMPLE_COMMIT_HASH@"
-#define SAMPLE_BUILD_TYPE "@SAMPLE_BUILD_TYPE@"
 #define SAMPLE_BUILD_OS "@SAMPLE_BUILD_OS@"
 #define SAMPLE_BUILD_COMPILER "@SAMPLE_BUILD_COMPILER@"
-#define SAMPLE_BUILD_PLATFORM "@SAMPLE_BUILD_PLATFORM@"
+#define SAMPLE_BUILD_COMPILER_VERSION "@SAMPLE_BUILD_COMPILER_VERSION@"
+#define SAMPLE_BUILD_TYPE "@SAMPLE_BUILD_TYPE@"
 #define SAMPLE_BUILD_TIME "@SAMPLE_BUILD_TIME@"
-#define SAMPLE_BUILD_BRANCH "@SAMPLE_BUILD_BRANCH@"
 #define SAMPLE_PROJECT_VERSION "@PROJECT_VERSION@@SAMPLE_VERSION_SUFFIX@"
+
+#include <iostream>
+#include <string>
+
+/**
+ * Prints project information
+ * @param project_name
+ */
+inline void printVersion(std::string project_name="")
+{
+    if (!project_name.empty()) {
+        std::cout << "Project Name     : " << project_name << std::endl;
+    }
+    std::cout << "Project Version  : " << SAMPLE_PROJECT_VERSION << std::endl;
+    std::cout << "Build OS         : " << SAMPLE_BUILD_OS << std::endl;
+    std::cout << "Compiler         : " << SAMPLE_BUILD_COMPILER << "/" << SAMPLE_BUILD_COMPILER_VERSION << std::endl;
+    std::cout << "Build Type       : " << SAMPLE_BUILD_TYPE << std::endl;
+    std::cout << "Build Time       : " << SAMPLE_BUILD_TIME << std::endl;
+}
