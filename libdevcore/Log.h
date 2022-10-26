@@ -44,7 +44,7 @@ namespace dev {
 #define LOG(level)                                   \
     if (dev::LogLevel::level >= dev::c_fileLogLevel) \
     BOOST_LOG_SEV(dev::FileLoggerHandler,            \
-        (boost::log::v2_mt_posix::trivial::severity_level)(dev::LogLevel::level))
+        (boost::log::BOOST_LOG_VERSION_NAMESPACE::trivial::severity_level)(dev::LogLevel::level))
 
 }  // namespace dev
 
