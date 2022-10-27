@@ -1,8 +1,12 @@
-[中文](./README.md),[English](./README.en.md)
+[中文](./README.md)/[English](./README.en.md)
 
 # Development kits
 
 Devkits是一个基于CMake构建，依赖Boost库的软件开发基本框架，用于快速新建工程、搭建开发环境
+
+[![](https://img.shields.io/badge/gitee-@stingliang-blue.svg)](https://gitee.com/stingliang)
+[![](https://img.shields.io/badge/github-@stingliang-blue.svg)](https://github.com/stingliang)
+[![GitHub All Releases](https://img.shields.io/github/downloads/stingliang/devkits/total.svg)](https://github.com/stingliang/devkits)
 
 ## 支持的平台
 

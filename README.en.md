@@ -1,8 +1,12 @@
-[中文](./README.md),[English](./README.en.md)
+[中文](./README.md)/[English](./README.en.md)
 
 # Development kits
 
 Devkits is a basic software development framework based on CMake and relying on Boost library, which is used to quickly create new projects and build development environments
+
+[![](https://img.shields.io/badge/gitee-@stingliang-blue.svg)](https://gitee.com/stingliang)
+[![](https://img.shields.io/badge/github-@stingliang-blue.svg)](https://github.com/stingliang)
+[![GitHub All Releases](https://img.shields.io/github/downloads/stingliang/devkits/total.svg)](https://github.com/stingliang/devkits)
 
 ## Supported platforms
 
