@@ -31,4 +31,4 @@ This project uses CMake as the construction tool. CMakeLists.txt under the proje
 
 ## License
 
-All contributions are made under the Apache License 2.0, see [LICENSE](../LICENSE) for details.
+All contributions are made under the Apache License 2.0, see [LICENSE](./LICENSE) for details.
