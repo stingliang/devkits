@@ -1,5 +1,7 @@
 [中文](./README.md)/[English](./README.en.md)
 
+![logo](docs/images/logo.png)
+
 # Development kits
 
 Devkits是一个基于CMake构建，依赖Boost库的软件开发基本框架，用于快速新建工程、搭建开发环境。
