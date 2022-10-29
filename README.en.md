@@ -1,5 +1,7 @@
 [中文](./README.md)/[English](./README.en.md)
 
+![logo](docs/images/logo.png)
+
 # Development kits
 
 Devkits is a basic software development framework based on CMake and relying on Boost library, which is used to quickly create new projects and build development environments.
