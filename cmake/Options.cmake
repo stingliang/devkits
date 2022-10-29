@@ -76,7 +76,6 @@ macro(print_config)
     message("-- Demo          Libraries usage demo         ${DEMO}")
     message("-- Tool          Utility tools                ${TOOL}")
     message("------------------------------------------------------------------------")
-    message("")
 endmacro()
 
 macro(print_library_info LIBRARY_NAME LIBRARY_VERSION)
