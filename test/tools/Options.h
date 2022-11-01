@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 
-namespace dev {
+namespace devkits {
     namespace test {
         class Options {
         public:
@@ -34,7 +34,7 @@ namespace dev {
         };
 
     }  // namespace test
-}  // namespace dev
+}  // namespace devkits
 
 
 #endif //DEVKITS_OPTIONS_H

@@ -22,7 +22,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/property_tree/ptree.hpp>
 
-namespace dev {
+namespace devkits {
     namespace initializer {
         class LogInitializer {
         public:
@@ -84,7 +84,7 @@ namespace dev {
             std::vector<int> m_currentHourVec;
         };
     }  // namespace initializer
-}  // namespace dev
+}  // namespace devkits
 
 
 #endif //DEVKITS_LOGINITIALIZER_H

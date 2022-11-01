@@ -11,7 +11,7 @@
 
 using namespace boost::unit_test;
 
-namespace dev {
+namespace devkits {
     namespace test {
         Options::Options(int argc, char** argv) {
             namespace po = boost::program_options;
@@ -44,4 +44,4 @@ namespace dev {
             return get(framework::master_test_suite().argc, framework::master_test_suite().argv);
         }
     }  // namespace test
-}  // namespace dev
+}  // namespace devkits

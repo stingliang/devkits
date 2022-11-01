@@ -19,7 +19,7 @@
 #define LOG_DESC(_DESCRIPTION) (_DESCRIPTION)
 #define LOG_KV(_K, _V) "[" << (_K) << "=" << (_V) << "]"
 
-namespace dev {
+namespace devkits {
     extern std::string const FileLogger;
     // the file logger
     extern boost::log::sources::severity_channel_logger_mt<boost::log::trivial::severity_level,
@@ -36,17 +36,14 @@ namespace dev {
     };
 
     extern LogLevel c_fileLogLevel;
-    extern LogLevel c_statLogLevel;
 
     void setFileLogLevel(LogLevel const& _level);
-    void setStatLogLevel(LogLevel const& _level);
 
-#define LOG(level)                                   \
-    if (dev::LogLevel::level >= dev::c_fileLogLevel) \
-    BOOST_LOG_SEV(dev::FileLoggerHandler,            \
-        (boost::log::BOOST_LOG_VERSION_NAMESPACE::trivial::severity_level)(dev::LogLevel::level))
+}  // namespace devkits
 
-}  // namespace dev
-
+#define LOG(level)  \
+    if (devkits::LogLevel::level >= devkits::c_fileLogLevel) \
+        BOOST_LOG_SEV(devkits::FileLoggerHandler,  \
+        (boost::log::BOOST_LOG_VERSION_NAMESPACE::trivial::severity_level)(devkits::LogLevel::level))
 
 #endif //DEVKITS_LOG_H

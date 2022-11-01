@@ -16,7 +16,7 @@
 #include <stdexcept>
 
 
-using namespace dev::initializer;
+using namespace devkits::initializer;
 
 namespace logging = boost::log;
 namespace expr = boost::log::expressions;
@@ -43,7 +43,7 @@ void LogInitializer::initLog(boost::property_tree::ptree const& _pt, std::string
                     << boost::log::expressions::smessage);
 }
 
-boost::shared_ptr<dev::initializer::LogInitializer::sink_t> LogInitializer::initLogSink(
+boost::shared_ptr<devkits::initializer::LogInitializer::sink_t> LogInitializer::initLogSink(
         boost::property_tree::ptree const& pt, unsigned const& _logLevel, std::string const& _logPath,
         std::string const& _logPrefix, std::string const& channel)
 {
