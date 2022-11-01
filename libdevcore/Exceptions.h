@@ -18,7 +18,7 @@
 #include <exception>
 #include <string>
 
-namespace dev
+namespace devkits
 {
     /**
      * @brief : Base class for all exceptions
@@ -51,6 +51,6 @@ namespace dev
      * @brief : error information to be added to exceptions
      */
     using errinfo_path = boost::error_info<struct tag_path, std::string>;
-}  // namespace dev
+}  // namespace devkits
 
 #endif //DEVKITS_EXCEPTIONS_H

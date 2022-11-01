@@ -16,11 +16,11 @@
 #include <string>
 #include <set>
 
-namespace dev {
+namespace devkits {
     namespace test {
 
         inline boost::filesystem::path getTestPath() {
-            boost::filesystem::path(dev::test::Options::get().testpath);
+            boost::filesystem::path(devkits::test::Options::get().testpath);
         }
 
         inline std::vector<boost::filesystem::path> getFiles(
@@ -38,6 +38,6 @@ namespace dev {
         }
 
     }  // namespace test
-}  // namespace dev
+}  // namespace devkits
 
 #endif //DEVKITS_COMMON_H

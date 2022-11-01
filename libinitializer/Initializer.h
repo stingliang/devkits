@@ -13,7 +13,7 @@
 #include "InitializerInterface.h"
 #include "LogInitializer.h"
 
-namespace dev {
+namespace devkits {
     namespace initializer {
         class Initializer: public InitializerInterface, public std::enable_shared_from_this<Initializer> {
         public:
@@ -27,7 +27,7 @@ namespace dev {
             LogInitializer::Ptr m_logInitializer = nullptr;
         };
 
-    } // dev
+    } // devkits
 } // initializer
 
 #endif //DEVKITS_INITIALIZER_H

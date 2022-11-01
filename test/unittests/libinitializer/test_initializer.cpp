@@ -25,8 +25,8 @@ BOOST_FIXTURE_TEST_SUITE(s_initializer, InitializerFixture)
     BOOST_AUTO_TEST_CASE(c_log) {
 
         // initialize all components
-        auto initialize = std::make_shared<dev::initializer::Initializer>();
-        std::string configPath(dev::test::Options::get().testpath + "/config.ini");
+        auto initialize = std::make_shared<devkits::initializer::Initializer>();
+        std::string configPath(devkits::test::Options::get().testpath + "/config.ini");
         BOOST_REQUIRE(boost::filesystem::is_regular_file(configPath));
         initialize->init(configPath);
 

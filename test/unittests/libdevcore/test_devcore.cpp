@@ -28,7 +28,7 @@ BOOST_FIXTURE_TEST_SUITE(s_devcore, DevcoreFixture)
     BOOST_AUTO_TEST_CASE(c_threadPool) {
         size_t test_thread_number = boost::thread::hardware_concurrency();
         size_t test_pool_size = test_thread_number / 2;
-        dev::ThreadPool pool(test_pool_size);
+        devkits::ThreadPool pool(test_pool_size);
         std::vector<std::future<int>> results;
 
         boost::atomic_int thread_counter(0), completed_counter(0);

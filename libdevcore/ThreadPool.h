@@ -24,7 +24,7 @@
 
 //#define SAMPLE_BOOST_THREAD_POOL
 
-namespace dev {
+namespace devkits {
 
     class ThreadPool {
     public:
@@ -70,6 +70,6 @@ namespace dev {
         boost::asio::io_context::work m_work;
     };
 
-}  // namespace dev
+}  // namespace devkits
 
 #endif //DEVKITS_THREADPOOL_H

@@ -10,7 +10,7 @@
 
 #include <string>
 
-namespace dev
+namespace devkits
 {
     namespace initializer
     {
@@ -23,6 +23,6 @@ namespace dev
             virtual void init(std::string const& _path) = 0;
         };
     }  // namespace initializer
-}  // namespace dev
+}  // namespace devkits
 
 #endif //DEVKITS_INITIALIZERINTERFACE_H

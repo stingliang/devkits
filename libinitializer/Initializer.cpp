@@ -12,7 +12,7 @@
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/ini_parser.hpp>
 
-using namespace dev;
+using namespace devkits;
 using namespace initializer;
 
 Initializer::~Initializer() {
