@@ -13,11 +13,10 @@
 #include <boost/log/sources/severity_channel_logger.hpp>
 #include <boost/log/trivial.hpp>
 
-// BCOS log format
-#define LOG_BADGE(_NAME) "[" << (_NAME) << "]"
-#define LOG_TYPE(_TYPE) (_TYPE) << "|"
+#define LOG_BADGE(_NAME) "[" << (_NAME) << "] "
+#define LOG_TYPE(_TYPE) (_TYPE) << " | "
 #define LOG_DESC(_DESCRIPTION) (_DESCRIPTION)
-#define LOG_KV(_K, _V) "[" << (_K) << "=" << (_V) << "]"
+#define LOG_KV(_K, _V) "[" << (_K) << "=" << (_V) << "] "
 
 namespace devkits {
     extern std::string const FileLogger;

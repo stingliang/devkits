@@ -16,13 +16,11 @@
 #include <queue>
 #include <memory>
 #include <thread>
-#include <mutex>
+#include <mutex>.
 #include <condition_variable>
 #include <future>
 #include <functional>
 #include <stdexcept>
-
-//#define SAMPLE_BOOST_THREAD_POOL
 
 namespace devkits {
 

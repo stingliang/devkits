@@ -12,6 +12,7 @@
 
 #include <chrono>
 
+#include "libdevcore/Log.h"
 #include "libdevcore/ThreadPool.h"
 
 using namespace std::chrono_literals;
