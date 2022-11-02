@@ -29,7 +29,11 @@ include_directories("${CMAKE_SOURCE_DIR}")
 
 add_subdirectory(libdevcore)
 add_subdirectory(libinitializer)
-add_subdirectory(example)
+
+# Demo
+if (DEMO)
+    add_subdirectory(example)
+endif()
 
 # Unit test settings
 if (TESTS)
