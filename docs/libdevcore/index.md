@@ -7,7 +7,7 @@ devkits的基础开发核心库libdevcore主要是提供在软件开发过程中
 - ThreadPool
 - Utility
 
-使用libdevcore中的内容后，需要在可执行程序依赖中添加devcore库，在CMakeLists中这样表示:
+使用libdevcore中的内容后，需要在可执行程序依赖中添加`devcore`库，在`CMakeLists.txt`中这样表示:
 
 ```cmake
 add_executable(${app_name} ${app_src})

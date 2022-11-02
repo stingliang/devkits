@@ -27,7 +27,7 @@ This project uses CMake as the construction tool. CMakeLists.txt under the proje
 
 ## Basic components
 
-- Gospel of Lazy People: Encapsulated Logs, General Tools and Exception Handling.
+- Gospel of Lazy People: Encapsulated Logs, General Tools and Exception Handling.（[libdevcore](docs/libdevcore/index.en.md)）
 - Secretary of main program: initialization module.
 - Always make sure your code functions properly: test modules.
 

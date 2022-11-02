@@ -8,7 +8,7 @@ devkits的日志支持以下几种等级的日志：
 
 `FATAL`/`ERROR`/`WARNING`/`INFO`/`DEBUG`/`TRACE`
 
-需要包含的头文件
+需要包含的头文件：
 
 ```c++
 #include "libdevcore/Log.h"
