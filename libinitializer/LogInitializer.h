@@ -5,8 +5,7 @@
  * @date 2022/10/26 21:00:54
  */
 
-#ifndef DEVKITS_LOGINITIALIZER_H
-#define DEVKITS_LOGINITIALIZER_H
+#pragma once
 
 #include "libdevcore/Log.h"
 
@@ -15,6 +14,7 @@
 #include <boost/log/expressions/formatters/named_scope.hpp>
 #include <boost/log/sinks/async_frontend.hpp>
 #include <boost/log/sinks/text_file_backend.hpp>
+#include <boost/log/sinks/text_ostream_backend.hpp>
 #include <boost/log/sources/severity_logger.hpp>
 #include <boost/log/trivial.hpp>
 #include <boost/log/utility/setup/common_attributes.hpp>
@@ -24,67 +24,94 @@
 
 namespace devkits {
     namespace initializer {
+        class Sink : public boost::log::sinks::text_file_backend {
+        public:
+            void consume(const boost::log::record_view& rec, const std::string& str) {
+                boost::log::sinks::text_file_backend::consume(rec, str);
+                auto severity = rec.attribute_values()[boost::log::aux::default_attribute_names::severity()]
+                        .extract<boost::log::trivial::severity_level>();
+                // bug fix: determine m_ptr before get the log level
+                //          serverity.get() will call  BOOST_ASSERT(m_ptr)
+                if (severity.get_ptr() && severity.get() == boost::log::trivial::severity_level::fatal) {
+                    // abort if encounter fatal, will generate coredump
+                    // must make sure only use LOG(FATAL) when encounter the most serious problem
+                    // forbid use LOG(FATAL) in the function that should exit normally
+                    std::abort();
+                }
+            }
+        };
+        class ConsoleSink : public boost::log::sinks::text_ostream_backend {
+        public:
+            void consume(const boost::log::record_view& rec, const std::string& str) {
+                boost::log::sinks::text_ostream_backend::consume(rec, str);
+                auto severity = rec.attribute_values()[boost::log::aux::default_attribute_names::severity()]
+                        .extract<boost::log::trivial::severity_level>();
+                // bug fix: determine m_ptr before get the log level
+                //          serverity.get() will call  BOOST_ASSERT(m_ptr)
+                if (severity.get_ptr() && severity.get() == boost::log::trivial::severity_level::fatal) {
+                    // abort if encounter fatal, will generate coredump
+                    // must make sure only use LOG(FATAL) when encounter the most serious problem
+                    // forbid use LOG(FATAL) in the function that should exit normally
+                    std::abort();
+                }
+            }
+        };
+
+        using sink_t = boost::log::sinks::asynchronous_sink<Sink>;
+        using console_sink_t = boost::log::sinks::asynchronous_sink<ConsoleSink>;
         class LogInitializer {
         public:
-            class Sink : public boost::log::sinks::text_file_backend {
-            public:
-                void consume(const boost::log::record_view& rec, const std::string& str) {
-                    boost::log::sinks::text_file_backend::consume(rec, str);
-                    auto severity =
-                            rec.attribute_values()[boost::log::aux::default_attribute_names::severity()]
-                                    .extract<boost::log::trivial::severity_level>();
-                    if (severity.get_ptr() && severity.get() == boost::log::trivial::severity_level::fatal) {
-                        // abort if encounter fatal, will generate coredump
-                        // must make sure only use LOG(FATAL) when encounter the most serious problem
-                        // forbid use LOG(FATAL) in the function that should exit normally
-                        std::abort();
-                    }
-                }
-            };
             using Ptr = std::shared_ptr<LogInitializer>;
-            using sink_t = boost::log::sinks::asynchronous_sink<Sink>;
-            virtual ~LogInitializer() { stopLogging(); }
             LogInitializer() = default;
+            virtual ~LogInitializer() { stopLogging(); }
 
-            /**
-             * @brief: set log for specified channel
-             *
-             * @param _pt: ptree that contains the log configuration
-             * @param channel: channel name
-             * @param logType: log prefix
-             * @note ptree should contains following key-value pair:\n
-             *          - log.log_path [string]\n
-             *          - log.level [string] fatal/error/warning/info/debug/trace\n
-             *          - log.max_log_file_size [unsigned int] unit is MB\n
-             *          - log.flush [bool] 0/1 if flush log immediately\n
-             *          - log.enable [bool] 0/1 open log or not\n
-             */
             void initLog(boost::property_tree::ptree const& _pt,
-                         std::string const& _channel = FileLogger, std::string const& _logPrefix = "log");
+                                 std::string const& _channel = devkits::FileLogger,
+                                 std::string const& _logPrefix = "log");
 
             void stopLogging();
 
-            /**
-             * @brief: get log level according to given string
-             *
-             * @param levelStr: the given string that should be transformed to boost log level
-             * @return unsigned: the log level
-             */
-            static unsigned getLogLevel(std::string const& levelStr);
+        protected:
+            virtual unsigned getLogLevel(std::string const& levelStr);
+            template <typename T>
+            void setLogFormatter(T _sink) {
+                /// set file format
+                /// log-level|timestamp |[g:groupId] message
+                _sink->set_formatter(
+                        boost::log::expressions::stream
+                                << boost::log::expressions::attr<boost::log::trivial::severity_level>("Severity") << "|"
+                                << boost::log::expressions::format_date_time<boost::posix_time::ptime>(
+                                        "TimeStamp", "%Y-%m-%d %H:%M:%S")
+                                << "|" << boost::log::expressions::smessage);
+            }
 
         private:
 
             boost::shared_ptr<sink_t> initLogSink(boost::property_tree::ptree const& _pt,
                                                   unsigned const& _logLevel, std::string const& _logPath,
-                                                  std::string const& _logPrefix, std::string const& channel);
+                                                  std::string const& _logPrefix,
+                                                  std::string const& channel);
+
+            boost::shared_ptr<console_sink_t> initConsoleLogSink(boost::property_tree::ptree const& _pt,
+                                                                 unsigned const& _logLevel, std::string const& channel);
 
         private:
-            static void stopLogging(boost::shared_ptr<sink_t> sink);
+            template <typename T>
+            void stopLogging(boost::shared_ptr<T> sink) {
+                if (!sink) {return; }
+                // remove the sink from the core, so that no records are passed to it
+                boost::log::core::get()->remove_sink(sink);
+                // break the feeding loop
+                sink->stop();
+                // flush all log records that may have left buffered
+                sink->flush();
+                sink.reset();
+            }
+
             std::vector<boost::shared_ptr<sink_t>> m_sinks;
+            std::vector<boost::shared_ptr<console_sink_t>> m_consoleSinks;
+
             std::vector<int> m_currentHourVec;
         };
     }  // namespace initializer
 }  // namespace devkits
-
-
-#endif //DEVKITS_LOGINITIALIZER_H

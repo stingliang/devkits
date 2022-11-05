@@ -8,6 +8,7 @@
 #ifndef DEVKITS_LOG_H
 #define DEVKITS_LOG_H
 
+#define BOOST_ALL_DYN_LINK
 #include <boost/log/attributes/constant.hpp>
 #include <boost/log/attributes/scoped_attribute.hpp>
 #include <boost/log/sources/severity_channel_logger.hpp>

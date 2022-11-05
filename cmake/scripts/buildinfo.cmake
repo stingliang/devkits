@@ -38,8 +38,8 @@ elseif(WIN32)
     )
 endif()
 
-set(TMPFILE "${BUILD_INFO_DST_DIR}/BuildInfo.h.tmp")
-set(OUTFILE "${BUILD_INFO_DST_DIR}/BuildInfo.h")
+set(TMPFILE "${CMAKE_BINARY_DIR}/BuildInfo.h.tmp")
+set(OUTFILE "${CMAKE_BINARY_DIR}/BuildInfo.h")
 
 configure_file("${SAMPLE_BUILDINFO_IN}" "${TMPFILE}")
 
