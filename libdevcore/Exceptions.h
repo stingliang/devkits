@@ -18,16 +18,13 @@
 #include <exception>
 #include <string>
 
-namespace devkits
-{
+namespace devkits {
     /**
      * @brief : Base class for all exceptions
      */
-    struct Exception : virtual std::exception, virtual boost::exception
-    {
+    struct Exception : virtual std::exception, virtual boost::exception {
         explicit Exception(std::string _message = std::string()) : m_message(std::move(_message)) {}
-        const char* what() const noexcept override
-        {
+        const char* what() const noexcept override {
             return m_message.empty() ? std::exception::what() : m_message.c_str();
         }
 
