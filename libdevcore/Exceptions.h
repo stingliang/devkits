@@ -32,6 +32,9 @@ namespace devkits {
         std::string m_message;
     };
 
+    using err_no = boost::error_info<struct tag_err_no, int>;
+    using err_str = boost::error_info<struct tag_err_str, std::string>;
+
 /// construct a new exception class overriding Exception
 #define DEV_SIMPLE_EXCEPTION(X)  \
     struct X : virtual Exception \
