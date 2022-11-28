@@ -40,3 +40,8 @@ if (TESTS)
     enable_testing()
     add_subdirectory(test)
 endif()
+
+# GUI components
+if (WITH_GUI)
+    add_subdirectory(gui)
+endif()

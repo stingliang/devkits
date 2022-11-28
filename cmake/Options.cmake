@@ -58,6 +58,8 @@ macro(configure_project)
     default_option(DEMO OFF)
     # Tools
     default_option(TOOL OFF)
+    # Gui components
+    default_option(WITH_GUI OFF)
 
     print_config()
 
@@ -75,6 +77,7 @@ macro(print_config)
     message("-- Test          Unit tests                   ${TESTS}")
     message("-- Demo          Libraries usage demo         ${DEMO}")
     message("-- Tool          Utility tools                ${TOOL}")
+    message("-- Gui           Compile GUI components       ${WITH_GUI}")
     message("------------------------------------------------------------------------")
 endmacro()
 
