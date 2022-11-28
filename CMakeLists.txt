@@ -6,7 +6,7 @@ set(DEVKITS_CMAKE_DIR "${CMAKE_CURRENT_LIST_DIR}/cmake" CACHE PATH "The path to 
 list(APPEND CMAKE_MODULE_PATH ${DEVKITS_CMAKE_DIR})
 
 # Project name and version, replace it with your own project version
-project(Devkits VERSION "2.0.0")
+project(Devkits VERSION "2.1.0")
 
 # Required cpp library version
 set(CMAKE_CXX_STANDARD 14)
@@ -25,7 +25,8 @@ include(ProjectBoost)
 configure_project()
 
 # Add project path to include path
-include_directories("${CMAKE_SOURCE_DIR}")
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+include_directories()
 
 add_subdirectory(libdevcore)
 add_subdirectory(libinitializer)

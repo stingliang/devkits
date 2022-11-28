@@ -11,7 +11,7 @@
 #include "libinitializer/Initializer.h"
 #include "tools/Options.h"
 
-#define TEST_LOG(LEVEL) LOG(LEVEL) << "[InitializerFixture]"
+#define TEST_LOG(LEVEL) LOG(LEVEL) << LOG_BADGE("InitializerFixture")
 
 struct InitializerFixture {
 
@@ -35,7 +35,7 @@ BOOST_FIXTURE_TEST_SUITE(s_initializer, InitializerFixture)
         TEST_LOG(INFO) << "This is a info log";
         TEST_LOG(WARNING) << "This is a warning log";
         TEST_LOG(ERROR) << "This is a error log";
-//    TEST_LOG(FATAL) << "This is a fatal log"; /**< It will cause coredump */
+//        TEST_LOG(FATAL) << "This is a fatal log"; /**< It will cause coredump */
     }
 
 BOOST_AUTO_TEST_SUITE_END()
