@@ -1,27 +1,3 @@
-#------------------------------------------------------------------------------
-# HTTP client from JSON RPC CPP requires curl library. It can find it itself,
-# but we need to know the libcurl location for static linking.
-#
-# HTTP server from JSON RPC CPP requires microhttpd library. It can find it itself,
-# but we need to know the MHD location for static linking.
-# ------------------------------------------------------------------------------
-# This file is part of FISCO-BCOS.
-#
-# FISCO-BCOS is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# FISCO-BCOS is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with FISCO-BCOS.  If not, see <http://www.gnu.org/licenses/>
-#
-# (c) 2016-2018 fisco-dev contributors.
-#------------------------------------------------------------------------------
 #find_package(CURL REQUIRED)
 # find_package(MHD REQUIRED)
 set(CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
