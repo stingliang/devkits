@@ -1,37 +1,17 @@
 file(GLOB SRC_LIST "*.cpp")
 file(GLOB HEADERS "*.h")
 
-set(APP_NAME DevkitsGui)
+set(APP_NAME libgui)
 
-# Modify your Qt library prefix path here
-set(CMAKE_PREFIX_PATH "C:\\Qt\\5.15.2\\msvc2019")
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
-
-find_package(Qt5 COMPONENTS
-        Core
-        Gui
-        Widgets
-        REQUIRED)
-
-add_executable(${APP_NAME} ${SRC_LIST} ${HEADERS})
-target_include_directories(${APP_NAME} PRIVATE ${Boost_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR})
-target_link_libraries(${APP_NAME}
-        devcore
-        initializer
-        ${Boost_LIBRARIES}
-        Qt5::Core
-        Qt5::Gui
-        Qt5::Widgets
-        )
+add_library(${APP_NAME} STATIC ${SRC_LIST} ${HEADERS})
+target_include_directories(${APP_NAME} PRIVATE ${CMAKE_SOURCE_DIR})
+target_link_libraries(${APP_NAME} Qt5::Core Qt5::Gui Qt5::Widgets)
 
 if (WIN32)
     set(DEBUG_SUFFIX)
     if (MSVC AND CMAKE_BUILD_TYPE MATCHES "Debug")
         set(DEBUG_SUFFIX "d")
     endif ()
-    set(QT_INSTALL_PATH "${CMAKE_PREFIX_PATH}")
     if (NOT EXISTS "${QT_INSTALL_PATH}/bin")
         set(QT_INSTALL_PATH "${QT_INSTALL_PATH}/..")
         if (NOT EXISTS "${QT_INSTALL_PATH}/bin")
