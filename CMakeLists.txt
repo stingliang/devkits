@@ -20,6 +20,11 @@ include(Options)
 
 # Third part libraries
 include(ProjectBoost)
+# GUI components
+if (WITH_GUI)
+    include(ProjectQt)
+    add_subdirectory(libgui)
+endif()
 
 # Print info
 configure_project()
@@ -39,9 +44,4 @@ endif()
 if (TESTS)
     enable_testing()
     add_subdirectory(test)
-endif()
-
-# GUI components
-if (WITH_GUI)
-    add_subdirectory(gui)
 endif()

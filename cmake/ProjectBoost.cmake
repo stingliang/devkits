@@ -15,7 +15,7 @@ find_package(Boost REQUIRED COMPONENTS
 
 # Check if library was found
 if(Boost_FOUND)
-    print_library_info("Boost" ${Boost_VERSION_STRING})
+    print_library_info("Boost" ${Boost_VERSION_STRING} ${Boost_LIBRARY_DIRS})
 else()
     message (FATAL_ERROR "Cannot find Boost")
 endif()
