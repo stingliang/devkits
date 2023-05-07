@@ -31,7 +31,6 @@ configure_project()
 
 # Add project path to include path
 include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
-include_directories()
 
 add_subdirectory(libdevcore)
 add_subdirectory(libinitializer)

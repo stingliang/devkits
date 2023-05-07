@@ -57,7 +57,7 @@ macro(configure_project)
     # Mini demos
     default_option(DEMO OFF)
     # Tools
-    default_option(TOOL OFF)
+    default_option(TOOLS OFF)
     # Gui components
     default_option(WITH_GUI OFF)
 
@@ -74,9 +74,9 @@ macro(print_config)
     message("-- Build type    Target type                  ${CMAKE_BUILD_TYPE}")
     message("-- Platform      Target platform              ${CMAKE_SYSTEM_NAME}")
     message("------------------------------------------------------------------------")
-    message("-- Test          Unit tests                   ${TESTS}")
-    message("-- Demo          Libraries usage demo         ${DEMO}")
-    message("-- Tool          Utility tools                ${TOOL}")
+    message("-- TESTS          Unit tests                   ${TESTS}")
+    message("-- DEMO           Libraries usage demo         ${DEMO}")
+    message("-- TOOLS          Utility tools                ${TOOL}")
     message("-- Gui           Compile GUI components       ${WITH_GUI}")
     message("------------------------------------------------------------------------")
 endmacro()
