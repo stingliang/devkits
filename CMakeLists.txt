@@ -11,6 +11,15 @@ project(Devkits VERSION "2.1.0")
 # Required cpp library version
 set(CMAKE_CXX_STANDARD 14)
 
+# set default build type as Debug
+if (NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug)
+endif ()
+
+# set default binary and library output path
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/output/${CMAKE_BUILD_TYPE}/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/output/${CMAKE_BUILD_TYPE}/lib)
+
 # Generate build information
 include(BuildInfo)
 create_build_info()
