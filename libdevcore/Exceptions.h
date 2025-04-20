@@ -8,6 +8,8 @@
 #ifndef DEVKITS_EXCEPTIONS_H
 #define DEVKITS_EXCEPTIONS_H
 
+#define BOOST_BIND_GLOBAL_PLACEHOLDERS
+
 #include <boost/exception/diagnostic_information.hpp>
 #include <boost/exception/errinfo_api_function.hpp>
 #include <boost/exception/exception.hpp>
